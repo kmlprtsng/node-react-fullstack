@@ -8,9 +8,3 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT || 5000; //environment variable. Heroku (CI) would do that.
 
 app.listen(PORT);
-
-//4 steps for hekoku
-//1. Dynamic port binding
-//2. specify node enviornment i.e. declare engines property it in package.json 
-//3. Specify start script i.e. scripts section, add start section
-//4. create .gitignore
