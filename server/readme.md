@@ -1,5 +1,7 @@
 Node React Fullstack
 
+#11.
+You can have multiple express applications running within node application
 
 # 12.
 mkdir server
@@ -34,3 +36,12 @@ heroku logs
 
 # 17. 
 (client - api call) localhost:500/auth/google -> (Server) google.com/auth?appid=123 -> (google redirects browser) localhost:5000/auth/google/callback?code=456 -> (server) get profile from code -> (google responds) -> (server) record user details -> (client) store user Id in cookie -> (client) redirect to home page
+
+PassportJs helps oAuth - 2 Limitations
+- hard to understand flow and big picture
+- how library been structured (passport [generic helper functions], passport strategy)
+
+There are 500+ strategies on passportJS. Go to website to find the right one.
+
+#19.
+npm install --save passport passport-google-oauth20
