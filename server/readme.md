@@ -1,5 +1,8 @@
 Node React Fullstack
 
+#3.
+Use Prettier to automatically format document on save.
+
 #11.
 You can have multiple express applications running within node application
 
@@ -47,10 +50,13 @@ There are 500+ strategies on passportJS. Go to website to find the right one.
 npm install --save passport passport-google-oauth20
 
 #20.
-console.developers.com
+http://console.developers.google.com
 create app and sign up for google+ Api (not oauth. Doh!!!) -> Create credentials -> Oauth client ID
 
 Authorised JavaScript origins -> http://localhost:5000
-Authorised redirect URI's: http://localhost:5000/*
+Authorised redirect URI's: http://localhost:5000/auth/google/callback
 
 Don't push clientSecret to Github. Create config -> keys.js and add to git ignore.
+
+#25.
+Once successfully logged in, the callback function for the GoogleStrategy will be called with the accessToken.
