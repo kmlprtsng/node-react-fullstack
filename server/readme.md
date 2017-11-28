@@ -45,3 +45,12 @@ There are 500+ strategies on passportJS. Go to website to find the right one.
 
 #19.
 npm install --save passport passport-google-oauth20
+
+#20.
+console.developers.com
+create app and sign up for google+ Api (not oauth. Doh!!!) -> Create credentials -> Oauth client ID
+
+Authorised JavaScript origins -> http://localhost:5000
+Authorised redirect URI's: http://localhost:5000/*
+
+Don't push clientSecret to Github. Create config -> keys.js and add to git ignore.
