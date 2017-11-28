@@ -60,3 +60,14 @@ Don't push clientSecret to Github. Create config -> keys.js and add to git ignor
 
 #25.
 Once successfully logged in, the callback function for the GoogleStrategy will be called with the accessToken.
+
+#26.
+Access token allows us to do stuff with users profile that they have given us access to e.g read emails etc.
+
+Refresh token allows us to update the access token as it refreshes after some time.
+
+#27. Nodemon Setup
+npm install --save nodemon
+
+Pacakge.json -> scripts  -> "dev" : "nodemon index.js"
+npm run dev
