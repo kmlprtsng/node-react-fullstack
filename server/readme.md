@@ -71,3 +71,6 @@ npm install --save nodemon
 
 Pacakge.json -> scripts  -> "dev" : "nodemon index.js"
 npm run dev
+
+#28. Refactor
+3 things: config, services and routes
