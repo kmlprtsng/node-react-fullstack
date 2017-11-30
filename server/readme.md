@@ -74,3 +74,73 @@ npm run dev
 
 #28. Refactor
 3 things: config, services and routes
+
+#30. Signin with oAuth
+Store some unique token from the profile. Google allows multiple emails so not a good strategy. Use the user's id provided by google.
+
+#31. Mongo DB Intro
+Mongoose.js optional library that provides useful operations.
+
+Mongoose has Model class. It has bunch of functions assigned to it e.g. creating a record, searching all the records.
+
+#32. Mongo DB Setup
+Hosting Mongo DB remotely https://mlab.com/
+
+#33. Connecting Mongoose
+npm install --save mongoose
+mongoose.connect(keys.mongoURI);
+You may see warning becuase mongoose need to update their code to bring it inline with MongoDb updates.
+
+#35. Mongoose Model class
+Deconstructing  - const { Schema } = mongoose; //destructing for const Schema = mongoose.Schema;
+Mongoose forces us to declare all the properties for a model ahead of time where Mongo Db doesn't have any such restrictions.
+
+Once mongoose is told about the model, it will create an empty collection if it doesn't exist.
+
+#36. Saving Model Instances
+const User = mongoose.model('users'); //fetch user Model instance
+new User({ }).save(); //create a user instance and save
+
+#37. Mongooes Queries
+User.findOne({googleId: profile.id}).then(user => { //do something });
+
+#38. Passport Callbacks
+call the done method to let passport know that we are done. First argument of the method should be null if there were no error otherwise an error object.
+
+#39. Encoding Users
+passport.serializeUser is called when the user authenticates.
+
+#40. Deserialize User
+passport.deserializeUser()
+
+This will put the user onto the request i.e. req.user
+
+#41. Enabling Cookies
+npm install --save cookie-session
+
+Extracts cookie data and encrypts and decrypts it. Passport will then pull out the data from the cookie data.
+
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    keys: [keys.cookieKey] //could provide multiple keys which could be used for different cookies
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+#42. Testing Authentication
+Request Comes in -> Cookie data is decrypted -> passport derserializes the user -> request sent to route handler.
+
+#43. Logging out
+request is attached with .logout() function by passportjs. It will clear the cookies.
+
+#44 Deeper Dive
+app.use() - used to plug in small middleware functions. Order of these methods is very important. These can be used for small subset of routes as well.
+
+req.session - cookieSession takes the data out of cookie and assigns it to session property.
+PassportJs looks at req.session for the user data.
+
+Express recommends express-session but we used cookie-session. They accomplish the same thing but do it in a different fashion. The difference is how the data is stored. 
+Cookie session -> all session data is within one cookie. 4093 bytes limitation.
+Express session -> stores session id on client side cookie and then lookup up the relevant information in the session store on the server side data store e.g. mongo db. Need to get a package for that.
