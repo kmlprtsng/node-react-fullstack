@@ -144,3 +144,13 @@ PassportJs looks at req.session for the user data.
 Express recommends express-session but we used cookie-session. They accomplish the same thing but do it in a different fashion. The difference is how the data is stored. 
 Cookie session -> all session data is within one cookie. 4093 bytes limitation.
 Express session -> stores session id on client side cookie and then lookup up the relevant information in the session store on the server side data store e.g. mongo db. Need to get a package for that.
+
+#45. Dev vs Prod keys
+Store keys in environment variables on production server.
+
+#47. Determining Enviroment
+keys.js will be used to load the correct value depending on whether you are in dev or production mode.
+Exclude dev.js file.
+
+Heroku automatically set the NODE_ENV to production.
+if(process.env.NODE_ENV === "production")
