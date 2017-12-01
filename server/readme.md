@@ -158,3 +158,9 @@ if(process.env.NODE_ENV === "production")
 
 #48. Heroku Environment variables
 Heroku -> select app -> settings -> config variables.
+
+#50. Fixing Heroku issues
+Callback url by google is http instead of https. The google strategy is figuring out the domain name. This issue is that heroku is proxying stuff. The actual server that the code is running on is http and is managed by the load balancer. Two ways to fix it:
+
+1. In passport.js change the callbackURL to be full url and not relative and put the settings in environment variables.
+2. set the proxy: true property. Forwarded to google to let it know to trust the proxy.

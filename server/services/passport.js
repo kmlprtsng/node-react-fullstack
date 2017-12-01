@@ -20,7 +20,8 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback"
+      callbackURL: "/auth/google/callback",
+      proxy: true
     },
     (acccessToken, refreshToken, profile, done) => {
       //access token allows us to do stuff with users profile that they have given us access to. e.g read emails etc.
