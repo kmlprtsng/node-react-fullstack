@@ -164,3 +164,42 @@ Callback url by google is http instead of https. The google strategy is figuring
 
 1. In passport.js change the callbackURL to be full url and not relative and put the settings in environment variables.
 2. set the proxy: true property. Forwarded to google to let it know to trust the proxy.
+
+# Section 6
+##51. React app generation
+npm install -g create-react-app
+create-react-app client
+
+##52. Seperate front end server
+npm start --run dev server
+
+##53. Running the client and the server
+concurrently package to run both servers at the same time.
+npm install --save concurrently
+
+add the following to scripts tag in package.json
+
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client", //go to client directory and run the command.
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+
+##54. Routing stumbling block
+Add proxy to api url in client/package.json
+
+"proxy": {
+    "/auth/google": {
+      "target": "http://localhost:5000"
+    }
+  }
+
+Restart the servers becuase package.json file changes don't get picked up.
+
+##55. Beauty of React proxy
+Callback url is failing so on google console add http://localhost:3000/auth/google/callback for port 3000 for client.
+
+npm run build --to build the react app
+
+##56. Why this architecture?
+2 Reasons for same domain for api and client:
+1. We are using cookies for authentication
+2. No CORS issue.
