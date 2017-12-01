@@ -203,3 +203,19 @@ npm run build --to build the react app
 2 Reasons for same domain for api and client:
 1. We are using cookies for authentication
 2. No CORS issue.
+
+##57. Async/Await
+fetch('http://someapi.com/products') --new method in latest browsers
+
+async function fetchProducts() {
+  //const res = fetch('http://someapi.com/products').then();
+  const res = await fetch('http://someapi.com/products');
+  const json = await res.json();
+
+  console.log(json);
+}
+
+// alternative for lamda
+const fetchProducts = async () => {
+
+}

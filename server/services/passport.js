@@ -23,18 +23,16 @@ passport.use(
       callbackURL: "/auth/google/callback",
       proxy: true
     },
-    (acccessToken, refreshToken, profile, done) => {
+    async (acccessToken, refreshToken, profile, done) => {
       //access token allows us to do stuff with users profile that they have given us access to. e.g read emails etc.
 
-      User.findOne({ googleId: profile.id }).then(existingUser => {
-        if (!existingUser) {
-          new User({ googleId: profile.id })
-            .save()
-            .then(user => done(null, user));
-        }
+      const existingUser = await User.findOne({ googleId: profile.id });
+      if (existingUser) {
+        return done(null, existingUser); //null for nothing went wrong and return the existing user.
+      }
 
-        done(null, existingUser); //null for nothing went wrong and return the existing user.
-      });
+      const user = new User({ googleId: profile.id }).save();
+      done(null, user);
     }
   )
 );
