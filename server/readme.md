@@ -33,9 +33,10 @@ Install heroku cli
 heroku login
 heroku create
 git remote add heroku https://REMOTE_URL
-git push heroku master
+git subtree push --prefix server heroku master //git push heroku master --This will push the whole repo, the listed command will only push the server folder
 heroku open --opens in the browser
 heroku logs
+heroku run bash //get access to shell
 
 # 17. 
 (client - api call) localhost:500/auth/google -> (Server) google.com/auth?appid=123 -> (google redirects browser) localhost:5000/auth/google/callback?code=456 -> (server) get profile from code -> (google responds) -> (server) record user details -> (client) store user Id in cookie -> (client) redirect to home page
