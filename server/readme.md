@@ -154,3 +154,6 @@ Exclude dev.js file.
 
 Heroku automatically set the NODE_ENV to production.
 if(process.env.NODE_ENV === "production")
+
+#48. Heroku Environment variables
+Heroku -> select app -> settings -> config variables.
