@@ -236,3 +236,21 @@ Node js has support for common js modules so that's what we use require() but Ba
 
 ##62. Troubleshooting NPM
 Command line error message due to old NPM. I didn't see it because I had the latest version. Author fixed the issue by deleting the package-lock.json file and did 'npm install' again.
+
+##63. Redux review and setup
+Redux - holds the state and data for the application.
+
+                Redux Store (where all the state exists)
+                    |
+                    ▼
+              combineReducers
+              |             |
+              ▼             ▼
+          authReducer    surverysReducer
+
+Two reducers (States) -> authReducer, surverysReducers (surveys created by user)
+
+How redux works
+To change state we use Action creater -> dispacthes actions to all the reducers -> reducers are combined with the combineReducers call which updates the state in our redux store.
+
+Provider is provided by react-redux library. Provider is setup with the root compoent so any component can access the Redux store via the provider tag. This then triggers all the UI to change when the state changes.
