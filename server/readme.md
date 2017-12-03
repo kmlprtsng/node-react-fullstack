@@ -205,6 +205,8 @@ npm run build --to build the react app
 2. No CORS issue.
 
 ##57. Async/Await
+async/await are there for syntatic sugar for promises to make the code easier to read and understand.
+
 fetch('http://someapi.com/products') --new method in latest browsers
 
 async function fetchProducts() {
@@ -219,3 +221,18 @@ async function fetchProducts() {
 const fetchProducts = async () => {
 
 }
+
+##60. Client React Setup
+Delete all files from withing client/src folder apart from registerServiceWorker.
+
+Two root files: index.js (bootup logic for react and redux), App.js (single component, rendering layer, React router logic)
+
+npm install --save redux react-redux react-router-dom
+
+##61. Installing root modules
+For components the file name will be Pascal casing e.g. App.js
+
+Node js has support for common js modules so that's what we use require() but Babel has good support for ES6 modules so that's why we use "import * from 'something'" syntax.
+
+##62. Troubleshooting NPM
+Command line error message due to old NPM. I didn't see it because I had the latest version. Author fixed the issue by deleting the package-lock.json file and did 'npm install' again.
