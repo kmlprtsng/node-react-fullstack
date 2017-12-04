@@ -254,3 +254,9 @@ How redux works
 <!-- To change state we use Action creater -> dispacthes actions to all the reducers -> reducers are combined with the combineReducers call which updates the state in our redux store. -->
 
 Provider is provided by react-redux library. Provider is setup with the root compoent so any component can access the Redux store via the provider tag. This then triggers all the UI to change when the state changes.
+
+##64. The Auth Reducer
+Create reducers folder. Create index.js (we call it that becuase referencing directory would automatically look for index.js
+
+##65. Finishing Reducer setup
+Combine the reducers in /client/reducers/index.js file
