@@ -260,3 +260,9 @@ Create reducers folder. Create index.js (we call it that becuase referencing dir
 
 ##65. Finishing Reducer setup
 Combine the reducers in /client/reducers/index.js file
+
+##67. React Router Setup
+There are three distinct library. 
+react-router-dom (for browser)
+react-router-native (for react native)
+react-router-core (shared between native and dom)
