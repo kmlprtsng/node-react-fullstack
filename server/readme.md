@@ -266,3 +266,6 @@ There are three distinct library.
 react-router-dom (for browser)
 react-router-native (for react native)
 react-router-core (shared between native and dom)
+
+##68. Route Configuration
+<BrowserRouter> tag can only have one child.
