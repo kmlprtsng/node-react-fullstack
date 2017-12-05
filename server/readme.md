@@ -269,3 +269,6 @@ react-router-core (shared between native and dom)
 
 ##68. Route Configuration
 <BrowserRouter> tag can only have one child.
+
+##69. Always Visible Components
+Going to /surveys route shows both Landing and Dashboard component. It's becuase Route is trying to match both '/' and 'surveys' both and shows both the components so use exact={true} attribute. We could emit ={true} bit and I guess we could also use an expression.
