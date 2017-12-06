@@ -272,3 +272,10 @@ react-router-core (shared between native and dom)
 
 ##69. Always Visible Components
 Going to /surveys route shows both Landing and Dashboard component. It's becuase Route is trying to match both '/' and 'surveys' both and shows both the components so use exact={true} attribute. We could emit ={true} bit and I guess we could also use an expression.
+
+##71. Materialize CSS
+Javascripts from materialize will not work with React. There is a "react Material UI" but we are not going to use it because to customizing is hard and not the easiest things to work with.
+
+ npm install --save materialize-css
+
+ ##72. Webpack with CSS
