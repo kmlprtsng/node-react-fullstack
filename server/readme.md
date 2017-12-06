@@ -278,4 +278,19 @@ Javascripts from materialize will not work with React. There is a "react Materia
 
  npm install --save materialize-css
 
- ##72. Webpack with CSS
+##72. Webpack with CSS
+import css using `import 'materialize-css/dist/css/materialize.min.css'`. We don't have to assign '* from' from it and webpack will automatically include it.
+
+##73. Header Design
+Use http://materializecss.com/ documenation.
+
+Remember use `className` instead of class becuase react likes it like it.
+
+##74. Current User API
+Materialize's undocumented feature is that it requires at least one root element inside of application with `class name of container`. 
+
+Goal is to figure out if the user is logged in when the app starts. 
+
+![Image of Yaktocat](readme_assets/React-Redux-Lifecyle.png)
+
+We need an `action creator` to make a ajax request to get the current user.
