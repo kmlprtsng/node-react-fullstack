@@ -10,7 +10,7 @@ import App from "./components/App";
 
 //need to pass it reducers. Currently we are passing it empty reducers list.
 //second param is for server side rendering and passing it some state but we are not worried about that for this course.
-const store = createStore(reducers, {}, applyMiddleware());
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
   <Provider store={store}>

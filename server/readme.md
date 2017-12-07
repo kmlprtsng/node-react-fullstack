@@ -301,7 +301,9 @@ npm install --save axios redux-thunk
 axios to make ajax calls.
 redux-thunk for action creation.
 
-create all the action creaters are in the /actions directory
+create all the action creaters are in the /actions directory.
+
+add redux thunk as middleware `applyMiddleware(reduxThunk)`.
 
 ES6 import funda. If the file has a deafult export like
 
@@ -332,3 +334,8 @@ add new proxy rule to allow api calls.
       "target": "http://localhost:5000"
     }
 ```
+
+## 76. Basics of Redux Thunk
+React redux without the third party library expects action creator to return an action immediately. The Purpose of redux thunk is to break this rule. Redux thunk gives us direct access to the dispatch function (which redux uses behind the scene to dispatch the actions to all the reducers) and then we can manually dispatch an action. I believe it is good for asynchrounus code.
+
+Redux Thunk  will automatically inspect a method and if it returns a function, it will automatically pass in a `dispatch` function to that returned function.
