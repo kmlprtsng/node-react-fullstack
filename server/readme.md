@@ -1,9 +1,9 @@
 Node React Fullstack
 
-#3.
+# 3.
 Use Prettier to automatically format document on save.
 
-#11.
+# 11.
 You can have multiple express applications running within node application
 
 # 12.
@@ -47,10 +47,10 @@ PassportJs helps oAuth - 2 Limitations
 
 There are 500+ strategies on passportJS. Go to website to find the right one.
 
-#19.
+# 19.
 npm install --save passport passport-google-oauth20
 
-#20.
+# 20.
 http://console.developers.google.com
 create app and sign up for google+ Api (not oauth. Doh!!!) -> Create credentials -> Oauth client ID
 
@@ -59,64 +59,64 @@ Authorised redirect URI's: http://localhost:5000/auth/google/callback
 
 Don't push clientSecret to Github. Create config -> keys.js and add to git ignore.
 
-#25.
+# 25.
 Once successfully logged in, the callback function for the GoogleStrategy will be called with the accessToken.
 
-#26.
+# 26.
 Access token allows us to do stuff with users profile that they have given us access to e.g read emails etc.
 
 Refresh token allows us to update the access token as it refreshes after some time.
 
-#27. Nodemon Setup
+# 27. Nodemon Setup
 npm install --save nodemon
 
 Pacakge.json -> scripts  -> "dev" : "nodemon index.js"
 npm run dev
 
-#28. Refactor
+# 28. Refactor
 3 things: config, services and routes
 
-#30. Signin with oAuth
+# 30. Signin with oAuth
 Store some unique token from the profile. Google allows multiple emails so not a good strategy. Use the user's id provided by google.
 
-#31. Mongo DB Intro
+# 31. Mongo DB Intro
 Mongoose.js optional library that provides useful operations.
 
 Mongoose has Model class. It has bunch of functions assigned to it e.g. creating a record, searching all the records.
 
-#32. Mongo DB Setup
+# 32. Mongo DB Setup
 Hosting Mongo DB remotely https://mlab.com/
 
-#33. Connecting Mongoose
+# 33. Connecting Mongoose
 npm install --save mongoose
 mongoose.connect(keys.mongoURI);
 You may see warning becuase mongoose need to update their code to bring it inline with MongoDb updates.
 
-#35. Mongoose Model class
+# 35. Mongoose Model class
 Deconstructing  - const { Schema } = mongoose; //destructing for const Schema = mongoose.Schema;
 Mongoose forces us to declare all the properties for a model ahead of time where Mongo Db doesn't have any such restrictions.
 
 Once mongoose is told about the model, it will create an empty collection if it doesn't exist.
 
-#36. Saving Model Instances
+# 36. Saving Model Instances
 const User = mongoose.model('users'); //fetch user Model instance
 new User({ }).save(); //create a user instance and save
 
-#37. Mongooes Queries
+# 37. Mongooes Queries
 User.findOne({googleId: profile.id}).then(user => { //do something });
 
-#38. Passport Callbacks
+# 38. Passport Callbacks
 call the done method to let passport know that we are done. First argument of the method should be null if there were no error otherwise an error object.
 
-#39. Encoding Users
+# 39. Encoding Users
 passport.serializeUser is called when the user authenticates.
 
-#40. Deserialize User
+# 40. Deserialize User
 passport.deserializeUser()
 
 This will put the user onto the request i.e. req.user
 
-#41. Enabling Cookies
+# 41. Enabling Cookies
 npm install --save cookie-session
 
 Extracts cookie data and encrypts and decrypts it. Passport will then pull out the data from the cookie data.
@@ -130,13 +130,13 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-#42. Testing Authentication
+# 42. Testing Authentication
 Request Comes in -> Cookie data is decrypted -> passport derserializes the user -> request sent to route handler.
 
-#43. Logging out
+# 43. Logging out
 request is attached with .logout() function by passportjs. It will clear the cookies.
 
-#44 Deeper Dive
+# 44 Deeper Dive
 app.use() - used to plug in small middleware functions. Order of these methods is very important. These can be used for small subset of routes as well.
 
 req.session - cookieSession takes the data out of cookie and assigns it to session property.
@@ -146,34 +146,34 @@ Express recommends express-session but we used cookie-session. They accomplish t
 Cookie session -> all session data is within one cookie. 4093 bytes limitation.
 Express session -> stores session id on client side cookie and then lookup up the relevant information in the session store on the server side data store e.g. mongo db. Need to get a package for that.
 
-#45. Dev vs Prod keys
+# 45. Dev vs Prod keys
 Store keys in environment variables on production server.
 
-#47. Determining Enviroment
+# 47. Determining Enviroment
 keys.js will be used to load the correct value depending on whether you are in dev or production mode.
 Exclude dev.js file.
 
 Heroku automatically set the NODE_ENV to production.
 if(process.env.NODE_ENV === "production")
 
-#48. Heroku Environment variables
+# 48. Heroku Environment variables
 Heroku -> select app -> settings -> config variables.
 
-#50. Fixing Heroku issues
+# 50. Fixing Heroku issues
 Callback url by google is http instead of https. The google strategy is figuring out the domain name. This issue is that heroku is proxying stuff. The actual server that the code is running on is http and is managed by the load balancer. Two ways to fix it:
 
 1. In passport.js change the callbackURL to be full url and not relative and put the settings in environment variables.
 2. set the proxy: true property. Forwarded to google to let it know to trust the proxy.
 
 # Section 6
-##51. React app generation
+## 51. React app generation
 npm install -g create-react-app
 create-react-app client
 
-##52. Seperate front end server
+## 52. Seperate front end server
 npm start --run dev server
 
-##53. Running the client and the server
+## 53. Running the client and the server
 concurrently package to run both servers at the same time.
 npm install --save concurrently
 
@@ -183,7 +183,7 @@ add the following to scripts tag in package.json
     "client": "npm run start --prefix client", //go to client directory and run the command.
     "dev": "concurrently \"npm run server\" \"npm run client\""
 
-##54. Routing stumbling block
+## 54. Routing stumbling block
 Add proxy to api url in client/package.json
 
 "proxy": {
@@ -194,17 +194,17 @@ Add proxy to api url in client/package.json
 
 Restart the servers becuase package.json file changes don't get picked up.
 
-##55. Beauty of React proxy
+## 55. Beauty of React proxy
 Callback url is failing so on google console add http://localhost:3000/auth/google/callback for port 3000 for client.
 
 npm run build --to build the react app
 
-##56. Why this architecture?
+## 56. Why this architecture?
 2 Reasons for same domain for api and client:
 1. We are using cookies for authentication
 2. No CORS issue.
 
-##57. Async/Await
+## 57. Async/Await
 async/await are there for syntatic sugar for promises to make the code easier to read and understand.
 
 fetch('http://someapi.com/products') --new method in latest browsers
@@ -222,22 +222,22 @@ const fetchProducts = async () => {
 
 }
 
-##60. Client React Setup
+## 60. Client React Setup
 Delete all files from withing client/src folder apart from registerServiceWorker.
 
 Two root files: index.js (bootup logic for react and redux), App.js (single component, rendering layer, React router logic)
 
 npm install --save redux react-redux react-router-dom
 
-##61. Installing root modules
+## 61. Installing root modules
 For components the file name will be Pascal casing e.g. App.js
 
 Node js has support for common js modules so that's what we use require() but Babel has good support for ES6 modules so that's why we use "import * from 'something'" syntax.
 
-##62. Troubleshooting NPM
+## 62. Troubleshooting NPM
 Command line error message due to old NPM. I didn't see it because I had the latest version. Author fixed the issue by deleting the package-lock.json file and did 'npm install' again.
 
-##63. Redux review and setup
+## 63. Redux review and setup
 Redux - holds the state and data for the application.
 
                 Redux Store (where all the state exists)
@@ -255,38 +255,38 @@ How redux works
 
 Provider is provided by react-redux library. Provider is setup with the root compoent so any component can access the Redux store via the provider tag. This then triggers all the UI to change when the state changes.
 
-##64. The Auth Reducer
+## 64. The Auth Reducer
 Create reducers folder. Create index.js (we call it that becuase referencing directory would automatically look for index.js
 
-##65. Finishing Reducer setup
+## 65. Finishing Reducer setup
 Combine the reducers in /client/reducers/index.js file
 
-##67. React Router Setup
+## 67. React Router Setup
 There are three distinct library. 
 react-router-dom (for browser)
 react-router-native (for react native)
 react-router-core (shared between native and dom)
 
-##68. Route Configuration
+## 68. Route Configuration
 <BrowserRouter> tag can only have one child.
 
-##69. Always Visible Components
+## 69. Always Visible Components
 Going to /surveys route shows both Landing and Dashboard component. It's becuase Route is trying to match both '/' and 'surveys' both and shows both the components so use exact={true} attribute. We could emit ={true} bit and I guess we could also use an expression.
 
-##71. Materialize CSS
+## 71. Materialize CSS
 Javascripts from materialize will not work with React. There is a "react Material UI" but we are not going to use it because to customizing is hard and not the easiest things to work with.
 
  npm install --save materialize-css
 
-##72. Webpack with CSS
+## 72. Webpack with CSS
 import css using `import 'materialize-css/dist/css/materialize.min.css'`. We don't have to assign '* from' from it and webpack will automatically include it.
 
-##73. Header Design
+## 73. Header Design
 Use http://materializecss.com/ documenation.
 
 Remember use `className` instead of class becuase react likes it like it.
 
-##74. Current User API
+## 74. Current User API
 Materialize's undocumented feature is that it requires at least one root element inside of application with `class name of container`. 
 
 Goal is to figure out if the user is logged in when the app starts. 
@@ -294,3 +294,41 @@ Goal is to figure out if the user is logged in when the app starts.
 ![Image of Yaktocat](readme_assets/React-Redux-Lifecyle.png)
 
 We need an `action creator` to make a ajax request to get the current user.
+
+## 75. Additional Proxy Rules
+npm install --save axios redux-thunk
+
+axios to make ajax calls.
+redux-thunk for action creation.
+
+create all the action creaters are in the /actions directory
+
+ES6 import funda. If the file has a deafult export like
+
+```javascript
+export default 42 //in A.js
+import A from './A'
+import Anacoda from './A' //allowed
+import Benadroll from './A' //allowed
+```
+
+```javascript
+export const A = 42  //in A.js
+
+import { A } from './A'
+import { myA } from './A' // Doesn't work!
+```
+
+```javascript
+//A module can only have one default export, but as many named exports as you'd like
+import A, { myA, Something } from './A'
+import X, { myA as myX, Something as XSomething } from './A'; //to create aliases
+```
+
+add new proxy rule to allow api calls.
+
+```javascript
+"/api/*": {
+      "target": "http://localhost:5000"
+    }
+```
