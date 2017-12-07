@@ -339,3 +339,8 @@ add new proxy rule to allow api calls.
 React redux without the third party library expects action creator to return an action immediately. The Purpose of redux thunk is to break this rule. Redux thunk gives us direct access to the dispatch function (which redux uses behind the scene to dispatch the actions to all the reducers) and then we can manually dispatch an action. I believe it is good for asynchrounus code.
 
 Redux Thunk  will automatically inspect a method and if it returns a function, it will automatically pass in a `dispatch` function to that returned function.
+
+## 77. Refactoring the App
+Refactor app to class based component.
+
+Need to make an ajax request to check if the user is logged in. componentWillMount can  be called multiple times so componentDidMount is prefferable.
