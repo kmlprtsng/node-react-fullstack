@@ -352,3 +352,8 @@ Need to make an ajax request to check if the user is logged in. componentWillMou
 Action dispatched need to be picked up by the AuthReducer.
 
 If getting current user and it took long time then the header may login button which is not what we want. Display spinny circle. Auth reducer should return null if we don't know if the user is logged in or not.
+
+## 81. Accessing state in Header comp
+We need to use the `connect` helper. 
+
+We can even use deconstructing for the parameters that are coming in into a function.
