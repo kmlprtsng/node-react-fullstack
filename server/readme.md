@@ -358,4 +358,5 @@ We need to use the `connect` helper.
 
 We can even use deconstructing for the parameters that are coming in into a function.
 
-## 82. Header content
+## 83. Redirecting a user after Authentication
+We get an error after authentication because passportjs authenticates but doesn't know where to redirect the user to. Pass in the third param to /auth/google/callback route and this will make the second parameter a middleware call.
