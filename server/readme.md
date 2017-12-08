@@ -344,3 +344,6 @@ Redux Thunk  will automatically inspect a method and if it returns a function, i
 Refactor app to class based component.
 
 Need to make an ajax request to check if the user is logged in. componentWillMount can  be called multiple times so componentDidMount is prefferable.
+
+## 78. Testing Fetch User
+`export default connect(null, actions)(App);` from the App.js and this will assign the actions onto `this.props`. 
