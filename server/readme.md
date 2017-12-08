@@ -347,3 +347,8 @@ Need to make an ajax request to check if the user is logged in. componentWillMou
 
 ## 78. Testing Fetch User
 `export default connect(null, actions)(App);` from the App.js and this will assign the actions onto `this.props`. 
+
+## 80. AuthReducer return value
+Action dispatched need to be picked up by the AuthReducer.
+
+If getting current user and it took long time then the header may login button which is not what we want. Display spinny circle. Auth reducer should return null if we don't know if the user is logged in or not.
