@@ -354,9 +354,60 @@ Action dispatched need to be picked up by the AuthReducer.
 If getting current user and it took long time then the header may login button which is not what we want. Display spinny circle. Auth reducer should return null if we don't know if the user is logged in or not.
 
 ## 81. Accessing state in Header comp
-We need to use the `connect` helper. 
+We need to use the `connect` helper. Pass function to connect method that will return the properties that should set onto the component properties.
+
+```javascript
+// shorter way to write it
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+
+/*function mapStateToProps(state) {
+  return { auth: state.auth };
+}*/
+
+export default connect(mapStateToProps)(Header);
+```
 
 We can even use deconstructing for the parameters that are coming in into a function.
 
 ## 83. Redirecting a user after Authentication
 We get an error after authentication because passportjs authenticates but doesn't know where to redirect the user to. Pass in the third param to /auth/google/callback route and this will make the second parameter a middleware call.
+
+## 84. Redirect on logout
+We need to redirect to /logout because we want to clear the cookies.
+
+## 85. Landing Component
+
+Ways to create a component:
+
+```javascript
+const Hello = () => <h1>Hello World</h1> //or const Hello = () => {return <h1>Hello World</h1> }
+export default Hello;
+```
+
+```javascript
+import React from 'react';
+class Hello extends React.Component {
+  render() {
+    return (<h1>Hello World</h1>);
+  }
+}
+```
+
+Styling: (first curly brace is to say it is javascript) `<div style={{textAlign: 'center'}}>` and the second curly brace signifies object.
+
+## 86. Link Tags
+`Link` tags should be used to navigate within the app i.e. internal routing. Use <a> tags for normal navigation.
+
+```javascript
+import { Link } from "react-router-dom";
+
+<Link
+  to={this.props.auth ? "surveys" : "/"}
+  className="left brand-logo"
+>
+  Emaily
+</Link>
+```
+
