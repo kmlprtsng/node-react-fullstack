@@ -357,3 +357,5 @@ If getting current user and it took long time then the header may login button w
 We need to use the `connect` helper. 
 
 We can even use deconstructing for the parameters that are coming in into a function.
+
+## 82. Header content
