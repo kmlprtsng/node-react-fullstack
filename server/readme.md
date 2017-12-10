@@ -417,3 +417,9 @@ We will use Stripe. With monthly plans, life gets complicated e.g. the customer 
 Recurly is a service that allows recurring i.e. monthly subscriptions. It as a charge an no free tier. It is built on top of Stripe so we can still use that.
 
 ## 90. Exploring the Stripe API
+Strip has many flows. We want to create API key. We are going to use `stripe checkout` library to make use of strip library and we are going to use `stripe checkout react`.
+
+`npm install --save react-stripe-checkout`
+
+## 91. Stripe Api Keys
+Add stripe keys to dev.js and heroku env variables.
