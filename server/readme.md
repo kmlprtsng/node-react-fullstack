@@ -423,3 +423,19 @@ Strip has many flows. We want to create API key. We are going to use `stripe che
 
 ## 91. Stripe Api Keys
 Add stripe keys to dev.js and heroku env variables.
+
+## 92. Env key with react
+We don't want to publish our dev key into the source code so we need to make use of create-react-app's Custom environment variables and also they might be different for developement and production.  We will use process.env.KEY to store our keys.
+
+`REACT_APP_SECRET_CODE=adsdfasdf npm start` for setting on a mac. For windows and other OS's the way is different. 
+
+The react vaiables must being with the prefix `REACT_APP_`.
+
+or we can make .env (and .env.local, .env.dev, .env.prod) files at the root of our project. The key is public anyway but we may to protect the abuse that we might get from publishing it into github and if that is the reason then we should make sure that it is not in the source control. 
+
+```javascript
+console.log("stripe key", process.env.REACT_APP_STRIPE_KEY);
+console.log("environment", process.env.NODE_ENV); //React automatically sets these.
+```
+
+## 93. Payments component
