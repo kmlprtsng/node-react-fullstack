@@ -411,3 +411,9 @@ import { Link } from "react-router-dom";
 </Link>
 ```
 
+## 88. Billing Consideration
+We will use Stripe. With monthly plans, life gets complicated e.g. the customer has used 400 surveys and they want to ugrade to the second tier plan which allows 1000 surveys. How would we do that? Try to avoid montly payment setup. So that's why we are using credits. 
+
+Recurly is a service that allows recurring i.e. monthly subscriptions. It as a charge an no free tier. It is built on top of Stripe so we can still use that.
+
+## 90. Exploring the Stripe API
