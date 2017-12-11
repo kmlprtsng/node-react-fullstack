@@ -427,7 +427,7 @@ Add stripe keys to dev.js and heroku env variables.
 ## 92. Env key with react
 We don't want to publish our dev key into the source code so we need to make use of create-react-app's Custom environment variables and also they might be different for developement and production.  We will use process.env.KEY to store our keys.
 
-`REACT_APP_SECRET_CODE=adsdfasdf npm start` for setting on a mac. For windows and other OS's the way is different. 
+`REACT_APP_SECRET_CODE=adsdfasdf` for setting on a mac. For windows and other OS's the way is different. 
 
 The react vaiables must being with the prefix `REACT_APP_`.
 
@@ -438,4 +438,35 @@ console.log("stripe key", process.env.REACT_APP_STRIPE_KEY);
 console.log("environment", process.env.NODE_ENV); //React automatically sets these.
 ```
 
-## 93. Payments component
+## 93. The Payments component
+Create Payments comonent wrapping the StripeCheckout component. By default US is the currency for stripe.
+
+Amount passed to StripeCheckout component is in cents.  Token property is the callback function after the payment is made.
+
+## 94. Stripe Tokens
+
+Returned array of elements instead of just one element
+
+```javascript
+default:
+        return [ //notice this
+          <li><Payment /></li>,
+          <li><a href="/api/logout">Logout</a></li>
+        ];
+```
+
+Test card number `4242 4242 4242 4242`. 
+
+There are fraud prevention apis that help to deal with fake ips. 
+
+## 95. Payment Fixes
+
+There was a warning about the key id by header js.
+
+```javascript
+default:
+        return [ //notice this
+          <li key="1"><Payment /></li>,
+          <li key="2"><a href="/api/logout">Logout</a></li>
+        ];
+```

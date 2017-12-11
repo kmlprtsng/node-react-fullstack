@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Payment from "./payments";
 
 class Header extends Component {
   //helper method
@@ -15,11 +16,14 @@ class Header extends Component {
           </li>
         );
       default:
-        return (
-          <li>
+        return [
+          <li key="1">
+            <Payment />
+          </li>,
+          <li key="2">
             <a href="/api/logout">Logout</a>
           </li>
-        );
+        ];
     }
   }
 
@@ -34,12 +38,7 @@ class Header extends Component {
           >
             Emaily
           </Link>
-          <ul className="right">
-            {this.renderContent()}
-            {/* <li>
-              <a href="sass.html">Login with Google</a>
-            </li> */}
-          </ul>
+          <ul className="right">{this.renderContent()}</ul>
         </div>
       </nav>
     );
