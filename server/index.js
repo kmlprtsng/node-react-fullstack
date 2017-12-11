@@ -19,7 +19,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-require("./routes/authRoutes")(app);
+require("./routes/authRoutes")(app); //these export a function which we immediately execute
+require("./routes/billingRoutes")(app);
 
 const PORT = process.env.PORT || 5000; //environment variable. Heroku (CI) would do that.
 app.listen(PORT);

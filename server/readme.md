@@ -470,3 +470,5 @@ default:
           <li key="2"><a href="/api/logout">Logout</a></li>
         ];
 ```
+
+## 97. POST Request Handlers
