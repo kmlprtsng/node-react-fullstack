@@ -9,13 +9,13 @@ module.exports = app => {
       description: "$5 for 5 credits",
       source: req.body.id
     });
+
+    req.user.credits += 5;
+    //we send the new user becuase it is the most up to date in the database and
+    //there is no good reason to use the req.user as there is a possibility that
+    //it is no the most up to date.
+    const user = await req.user.save();
+
+    res.send(user);
   });
-
-  req.user.credits += 5;
-  //we send the new user becuase it is the most up to date in the database and 
-  //there is no good reason to use the req.user as there is a possibility that 
-  //it is no the most up to date.
-  const user = await req.user.save();
-
-  res.send(user);
 };
