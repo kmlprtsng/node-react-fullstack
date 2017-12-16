@@ -2,8 +2,8 @@ const express = require("express"),
   mongoose = require("mongoose"),
   cookieSession = require("cookie-session"),
   passport = require("passport"),
-  bodyParser = require("body-parser");
-keys = require("./config/keys");
+  bodyParser = require("body-parser"),
+  keys = require("./config/keys");
 
 require("./models/User");
 require("./services/passport");

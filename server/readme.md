@@ -492,3 +492,21 @@ Handle the token at the /api/stripe endpoint
 Update the mongoose schema in the User.js model.
 
 Create a new property with defaut value `credits: {type: Number, default: 0}`
+
+## 104. Requiring authentication
+Only allow authenticated users to make calls to certain endpoints.
+
+## 105. Route specific middleware
+Reminder. For files that return function, the filename will be camel case but for component or model it will be pascal case.
+
+```javascript
+//requireLogin.js middleware
+module.exports = (req, res, next) => {
+    //next is a function that is called when middleware is done
+    if (!req.user)
+      return res.status(401).send({ error: "You must log in!" });
+};
+
+//in billingRoutes.js, we are passing in requireLogin
+app.post("/api/stripe", requireLogin, async (req, res);
+```
