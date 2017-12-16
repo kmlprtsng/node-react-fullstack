@@ -484,3 +484,6 @@ Gotcha with express. POST request, express by default doesn't parse the data. We
 `app.use(bodyParser.json());`
 
 this will update the req.body property.
+
+## 101. Creating a Charge Object
+Handle the token at the /api/stripe endpoint
