@@ -515,3 +515,75 @@ added styles using `<li key="3" style={{ margin: "0 10px" }}>`
 
 ## 107. Updaing Credits
 The credits automatically update due to the redux framework that we have already set up. This causes the react components to automatically udpate.
+
+# Section 9: Back End to Front End Routing In Production
+
+## 108. Express with Client Web App in production
+cd client
+`npm run build` for production
+
+Challange, how does the express server tells the difference between the call to api endpoint e.g. /api/stripe and react app path e.g. /surveys. We have to make an assumption that 
+
+## 109. Routing in Production
+
+## 110. Deployment Options
+
+## 111. Adding in a Heroku Build Step
+
+## 112. Testing Deployment
+
+# Section 10 Mongoose for Survey Creation
+
+## 113. Survey Overview
+
+## 114. Server Routes
+
+## 115. Survey Model
+
+## 116. Model Deficiencies
+
+## 117. Limitations of Subdocument Collection
+
+## 118. Setting up SubDocs
+
+## 119. Relationship Fields
+
+## 120. Survey Creation Route Handler
+
+## 121. Verifying Minimum Credits
+
+## 122. Creating Surveys
+
+## 123. Creating Subdoc Collections
+
+## 124. Oops! A little Tweak
+
+## 125. Creating Mailers
+
+## 126. Identifying Unique Users
+
+## 127. Sendgrid Setup
+
+## 128. Mailer Setup
+
+## 129. Mailer in Use
+
+## 130. Mailer Constructor
+
+## 131. Boilerplace for Sending Emails
+
+## 132. More Mailer Properties
+
+## 133. Sending SendGrid Emails
+
+## 134. Testing Email Sending
+
+## 135. Improving the Email Template
+
+## 136. Polish in the Route Handler
+
+## 137. Verifying Sendgrid Click Tracking
+
+## 138. Feedback for User Feedback
+
+# Section 11. Back to the Client
