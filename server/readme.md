@@ -510,3 +510,8 @@ module.exports = (req, res, next) => {
 //in billingRoutes.js, we are passing in requireLogin
 app.post("/api/stripe", requireLogin, async (req, res);
 ```
+## 106. Displaying Credit quantity
+added styles using `<li key="3" style={{ margin: "0 10px" }}>`
+
+## 107. Updaing Credits
+The credits automatically update due to the redux framework that we have already set up. This causes the react components to automatically udpate.
