@@ -487,3 +487,8 @@ this will update the req.body property.
 
 ## 101. Creating a Charge Object
 Handle the token at the /api/stripe endpoint
+
+## 103. Add credits to a user
+Update the mongoose schema in the User.js model.
+
+Create a new property with defaut value `credits: {type: number, default: 0}`
