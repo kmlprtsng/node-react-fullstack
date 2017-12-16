@@ -472,3 +472,15 @@ default:
 ```
 
 ## 99. Creating Charges
+npm package for backend stripe api. Stripe offers a lot of services but we are interested in the charges resource.
+
+`npm install --save stripe`
+
+## 100. BodyParser Middleware
+Gotcha with express. POST request, express by default doesn't parse the data. We need middleware for that.
+
+`npm install --save body-parser`
+
+`app.use(bodyParser.json());`
+
+this will update the req.body property.
