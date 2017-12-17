@@ -619,14 +619,21 @@ Created requireCredits middleware.
 ## 125. Creating Mailers
 
 ## 126. Identifying Unique Users
+Sendgrid hijacks all the link within our email and when the users click it, it goes to sendgrid server and we will use a webhook to receieve the notification and the link that they clicked on.
 
 ## 127. Sendgrid Setup
+Create Full Access Api key.
+
+`npm install --save sendgrid`
 
 ## 128. Mailer Setup
+Mailer will be a service and it starts with capital letter because it exports a class.
 
 ## 129. Mailer in Use
+Create `emailTemplates` folder in services and create a `surveyTemplate.js` file which will take a survey argument and return a nicely formatted email template.
 
 ## 130. Mailer Constructor
+Populated Mailer.js with code for constructor. Pretty much follow the code convention that SendGrid has set in their documentation.
 
 ## 131. Boilerplace for Sending Emails
 

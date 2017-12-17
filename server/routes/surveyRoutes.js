@@ -1,7 +1,9 @@
 const requireLogin = require("./../middlewares/requireLogin"),
   requireCredits = require("./../middlewares/requireCredits"),
   mongoose = require("mongoose"),
-  Survey = mongoose.model("surveys");
+  Survey = mongoose.model("surveys"),
+  Mailer = require("../services/Mailer"),
+  surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 
 module.exports = app => {
   app.post("/api/surveys", requireLogin, requireCredits, (req, res) => {
@@ -17,5 +19,9 @@ module.exports = app => {
       _user: req.body.user.id,
       dateSent: Date.now()
     });
+
+    //send the survey
+
+    const mailer = new Mailer(survey, surveyTemplate(survey));
   });
 };
