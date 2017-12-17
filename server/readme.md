@@ -647,9 +647,11 @@ SendGrid code to write is nasty. Alternative is MailChimp to look at.
 ## 135. Improving the Email Template
 
 ## 136. Polish in the Route Handler
+Remove credits from the user on sending email and add try catch block
 
 ## 137. Verifying Sendgrid Click Tracking
 
 ## 138. Feedback for User Feedback
+Added redirectDomain key to make it configurable.
 
 # Section 11. Back to the Client
