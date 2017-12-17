@@ -525,10 +525,45 @@ cd client
 Challange, how does the express server tells the difference between the call to api endpoint e.g. /api/stripe and react app path e.g. /surveys. We have to make an assumption that 
 
 ## 109. Routing in Production
+Add code to express api when running in production.
+
+```javascript
+if (process.env.NODE_ENV === "production") {
+  //if a request that comes in and express doesn't know how to handle it then
+  //it will look in this folder.
+  app.use(express.static("client/build"));
+
+  //becuase react has html5 user friendly urls, this will be a catch all if
+  //we dont understand how to handle the request
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
+```
 
 ## 110. Deployment Options
+We have 3 options.
+
+1. Build client locally and send to heroku. This breaks convention.
+2. Push to Heroku and get Heroku to build for us. (This would mean we will have to get all dependencies i.e. Webpack, Create-React-App. Some people don't like it but the dependencies dont get used after we are done so it's no big deal).
+3. Push to CI. It run tests and does CI build and push to Heroku. CircleCI can be used for that.
 
 ## 111. Adding in a Heroku Build Step
+Push to heroku
+      |
+Heroku install server deps
+      |
+Hero runs 'heroku-postbuild'
+      |
+We tell heroku to install client deps
+      |
+Heroku to run 'npm run build'
+
+On heroku look for documentation 'Heroku Node.js Support' -> 'Customising build process'. Instead of adding a postinstall under script, we will use heroku-postbuild flag becuase we don't want other devs to automatically run these scripts when they get the project. We only want this on heroku.
+
+`heroku config:set NPM_CONFIG_PRODUCTION=false` to get dev depenencies. We need to make sure that it only affects the client side project.
+
+`"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"` --prefix flag to only run npm install in client folder.
 
 ## 112. Testing Deployment
 

@@ -25,5 +25,17 @@ app.use(passport.session());
 require("./routes/authRoutes")(app); //these export a function which we immediately execute
 require("./routes/billingRoutes")(app);
 
+if (process.env.NODE_ENV === "production") {
+  //if a request that comes in and express doesn't know how to handle it then
+  //it will look in this folder.
+  app.use(express.static("client/build"));
+
+  //becuase react has html5 user friendly urls, this will be a catch all if
+  //we dont understand how to handle the request
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
+
 const PORT = process.env.PORT || 5000; //environment variable. Heroku (CI) would do that.
 app.listen(PORT);
