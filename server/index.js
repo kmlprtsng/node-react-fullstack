@@ -3,7 +3,8 @@ const express = require("express"),
   cookieSession = require("cookie-session"),
   passport = require("passport"),
   bodyParser = require("body-parser"),
-  keys = require("./config/keys");
+  keys = require("./config/keys"),
+  path = require("path");
 
 require("./models/User");
 require("./services/passport");
