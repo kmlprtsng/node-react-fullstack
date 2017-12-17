@@ -6,6 +6,7 @@ class Mailer extends helper.Mail {
   constructor({ subject, recipients }, content) {
     super(); //invoke Mail constructor
 
+    this.sgApi = sendgrid(keys.sendGridKey);
     this.from_email = new helper.Email("no-replay@emaily.com");
     this.subject = subject;
     this.body = new helper.Content("text/html", content);
@@ -27,7 +28,26 @@ class Mailer extends helper.Mail {
     this.addTrackingSettings(trackingSettings);
   }
 
-  addRecipients() {}
+  addRecipients() {
+    const personlize = new helper.Personalization();
+    this.recipients.forEach(recipient => {
+      personlize.addTo(recipient);
+    });
+    this.addPersonalization(personlize);
+  }
+
+  async send() {
+    const request = this.sgApi.emptyRequest({
+      method: "POST",
+      path: "/v3/mail/send",
+      body: this.toJSON()
+    });
+
+    console.log(this.toJSON());
+
+    const response = this.sgApi.API(request);
+    return response;
+  }
 }
 
 module.exports = Mailer;

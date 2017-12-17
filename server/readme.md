@@ -638,6 +638,7 @@ Populated Mailer.js with code for constructor. Pretty much follow the code conve
 ## 131. Boilerplace for Sending Emails
 
 ## 132. More Mailer Properties
+SendGrid code to write is nasty. Alternative is MailChimp to look at.
 
 ## 133. Sending SendGrid Emails
 

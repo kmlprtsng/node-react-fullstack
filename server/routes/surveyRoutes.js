@@ -16,12 +16,13 @@ module.exports = app => {
       recipients: recipients.split(",").map(email => ({
         email: email.trim()
       })),
-      _user: req.body.user.id,
+      _user: req.body.id,
       dateSent: Date.now()
     });
 
     //send the survey
 
     const mailer = new Mailer(survey, surveyTemplate(survey));
+    mailer.send();
   });
 };
