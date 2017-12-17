@@ -7,6 +7,7 @@ const express = require("express"),
   path = require("path");
 
 require("./models/User");
+require("./models/Survey");
 require("./services/passport");
 
 mongoose.connect(keys.mongoURI);
@@ -25,6 +26,7 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app); //these export a function which we immediately execute
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   //if a request that comes in and express doesn't know how to handle it then

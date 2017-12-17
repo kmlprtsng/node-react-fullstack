@@ -575,17 +575,40 @@ On heroku look for documentation 'Heroku Node.js Support' -> 'Customising build 
 
 ## 115. Survey Model
 
+```javascript
+const surveySchema = new Schema({
+  title: String,
+  body: String,
+  subject: String,
+  recipients: [String] //declaring array like so
+});
+```
+
 ## 116. Model Deficiencies
+Duplicate votes by the same user. So we will use subdocument collection with email and clicked property.
 
 ## 117. Limitations of Subdocument Collection
+Why are we limiting the nesting and not putting surveys under the User as subcollection.
+
+Mongo db size limit is 4mb per record. So if we had surveys under the user then we will run out of disk space.
 
 ## 118. Setting up SubDocs
 
 ## 119. Relationship Fields
 
+```javascript
+const surveySchema = new Schema({
+  title: String,
+  _user: { type: Schema.Types.ObjectId, ref: "User" } 
+  //relationship to a user instance
+  //prefix of underscore is not required but we could use it to make it clear it is a relationship (convention)
+});
+```
+
 ## 120. Survey Creation Route Handler
 
 ## 121. Verifying Minimum Credits
+Created requireCredits middleware.
 
 ## 122. Creating Surveys
 
