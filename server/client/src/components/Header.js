@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Payment from "./payments";
+import Payment from "./Payments";
 
 class Header extends Component {
   //helper method
@@ -16,6 +16,7 @@ class Header extends Component {
           </li>
         );
       default:
+        console.log("render default right content");
         return [
           <li key="1">
             <Payment />

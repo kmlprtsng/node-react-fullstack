@@ -657,12 +657,32 @@ Added redirectDomain key to make it configurable.
 # Section 11. Back to the Client
 
 ## 139. Client Side Survey Creation
+
 ## 140. Material Icons
 ## 141. Navigation with the Link Tag
 ## 142. SurveyNew Form
 ## 143. Purpose of Redux Form
+Communicating data is easy with redux form. Redux form save us the trouble to wiring up all the redux communication. We will use the `formReducer` provider by the library to help us out. 
+
 ## 144. Redux Form Setup
+`npm install --save redux-form`
+
+```javascript
+import { reducer as reduxForm } from "redux-form";
+export default combineReducers({
+  auth: authReducer,
+  form: reduxForm //the key has to be form. Look at documentation if we want to change it
+});
+```
+ReduxForm has the best documentation.
+
 ## 145. The ReduxForm Helper
+```javascript
+export default reduxForm({
+    form: 'surveyForm'
+})(SurveyForm); //bind reduxForm to component
+```
+
 ## 146. Redux Form in Practice
 ## 147. Custom Field Component
 ## 148. Wiring up Custom Fields
