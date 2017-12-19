@@ -868,10 +868,25 @@ In the SurveyNew component add the reduxForm
 Why does it work: the `destroyOnUnmount` value is not set to true so reduxForm dumps the value when we navigate away from surveyNew component and uses the default behaviour.
 
 ## 165. Fixing Property Names
-
+Client has emails property for the field and the backend expects recipients so we change the name in the fields but I already had done that :-)
 
 ## 166. Posting to Surveys
+```javascript
+export const submitSurvey = values => async dispatch => {
+  const res = await axios.post("/api/surveys", values);
+
+  dispatch({
+    type: FETCH_USER,
+    payload: res.data
+  });
+};
+```
 ## 167. Redirect on Submit
+Teach SurveyFormReview about react router.
+
+`import { withRouter } from 'react-router-dom'`
+`export default connect(mapStateToProps, actions)(withRouter(SurveyFormReview));`
+`history.push("/surveys"); //pass this parameter to the action`
 
 # Section 12. Handling Webhook Data
 
