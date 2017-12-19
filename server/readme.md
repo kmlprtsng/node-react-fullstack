@@ -769,6 +769,11 @@ export default reduxForm({
 ## 155. Validating Emails
 ## 156. Displaying Invalid Emails
 ## 157. Toggling Visibility?
+Three ways to show the survey review forms:
+- Seperate route
+- redux (so update state on the redux form with action reducers etc. but we don't need to make it global becuase no other component will care)
+- component state (so some variable to toggle feature at component level)
+
 ## 158. Advancing from SurveyForm
 ## 159. Retreat to the Form
 ## 160. Persisting Form Values
