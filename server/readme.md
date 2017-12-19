@@ -382,8 +382,12 @@ We need to redirect to /logout because we want to clear the cookies.
 Ways to create a component:
 
 ```javascript
-const Hello = () => <h1>Hello World</h1> //or const Hello = () => {return <h1>Hello World</h1> }
+const Hello = () => <h1>Hello World</h1> //or const Hello = () => {return (<h1>Hello World</h1>) }
 export default Hello;
+```
+
+```javascript
+export default = (props) => <h1>Hello World</h1> //or const Hello = () => { console.log(this.props);  return (<h1>Hello World</h1>) }
 ```
 
 ```javascript
@@ -393,6 +397,8 @@ class Hello extends React.Component {
     return (<h1>Hello World</h1>);
   }
 }
+
+export default Hello;
 ```
 
 Styling: (first curly brace is to say it is javascript) `<div style={{textAlign: 'center'}}>` and the second curly brace signifies object.
@@ -684,12 +690,80 @@ export default reduxForm({
 ```
 
 ## 146. Redux Form in Practice
+```html
+<form onSubmit={this.props.handleSubmit(values => console.log(values))}>
+  <Field type="text" name="surveyTitle" component="input" />
+  <button type="submit">Submit</button>
+</form>
+``` function is provided by redux forms.
+
 ## 147. Custom Field Component
+`<input {...this.props.input} />` Redux form would attach an `input` property to props and it has all the onBlur, onChange etc. events on it and this nifty little code would bind all those events into the input.
+
 ## 148. Wiring up Custom Fields
 ## 149. DRY'ing Up Fields
 ## 150. Fields from Config
+Loop through the fields
+
+```javascript
+const FIELDS = [
+  { label: "Survey Title", name: "title" },
+  { label: "Subject Line", name: "subject" },
+  { label: "Email Body", name: "body" },
+  { label: "Recipients List", name: "recipients" }
+];
+
+class SurveyForm extends React.Component {
+  renderFields() {
+    return _.map(FIELDS, field => {
+      return (
+        <Field
+          component={SurveyField}
+          type="text"
+          key={field.name}
+          label={field.label}
+          name={field.name}
+        />
+      );
+    });
+  }
+```
 ## 151. Styling the Form
 ## 152. Form Validation
+`this.props.meta` property has the validation error. It also has `this.props.meta.touched`.
+
+Example of destructing within destructing: `{ input, label, meta: {error, touched} }`
+
+```javascript
+function validate(values) {
+  const errors = {};
+
+  //make sure property on the error matches the field property
+  if(!values.title) {
+    errors.title = 'You must provide a title';
+  }
+
+  return errors;
+
+}
+
+export default reduxForm({
+  validate,
+  form: "surveyForm"
+})(SurveyForm);
+
+//surveyField.js component
+  const { touched, error } = this.props.meta;
+
+  return (
+    <div>
+      <label>{this.props.label}</label>
+      <input {...this.props.input} />
+      { touched && error }
+    </div>
+  );
+```
+
 ## 153. Showing Validation Errors
 ## 154. Generalizing Field Validation
 ## 155. Validating Emails
