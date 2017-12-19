@@ -24,3 +24,9 @@ export const handleToken = token => async dispatch => {
     payload: res.data
   });
 };
+
+export const submitSurvey = values => {
+  return {
+    type: "submit_survey"
+  };
+};

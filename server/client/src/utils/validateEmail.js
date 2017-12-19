@@ -9,7 +9,6 @@ export default emails => {
     });
 
   if (invalidEmails.length) {
-    console.log(invalidEmails);
     return `These emails are invalid: ${invalidEmails}`;
   }
 

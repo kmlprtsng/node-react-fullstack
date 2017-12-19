@@ -775,13 +775,101 @@ Three ways to show the survey review forms:
 - component state (so some variable to toggle feature at component level)
 
 ## 158. Advancing from SurveyForm
+```javascript
+renderContent() {
+    if (this.state.showFormReview === true) {
+      return <SurveyFormReview />;
+    }
+
+    return (
+      <SurveyForm
+        onSurveySubmit={() => this.setState({ showFormReview: true })}
+      />
+    );
+  }
+
+  <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)} />
+```
 ## 159. Retreat to the Form
+
+```javascript
+export default ({ onCancel }) => {
+  return (
+    <div>
+      <h5>Please confirm your entries</h5>
+      <button className="btn-flat darken-3 yellow" onClick={onCancel}>
+        Back
+      </button>
+    </div>
+  );
+};
+```
+
 ## 160. Persisting Form Values
-## 161. Refactoring Form Fields
+```javascript
+export default reduxForm({
+  validate,
+  form: "surveyForm",
+  destroyOnUnmount: false
+})(SurveyForm);
+```
+
+## 161. Refactoring Form Values
+
+```javascript
+function mapStateToProps(state) {
+    return {formValues: state.form.surveyForm.values};
+}
+
+//connect passes the whole redux state to the mapStateToProps function
+export default connect(mapStateToProps)(SurveyFormReview);
+```
+
 ## 162. Finalize Review Fields
+```javascript
+import formFields from "./formFields";
+
+const SurveyFormReview = ({ onCancel, formValues }) => {
+  const reviewFields = _.map(formFields, ({ name, label }) => {
+    return (
+      <div key={name}>
+        <label>{label}</label>
+        <div>{formValues[name]}</div>
+      </div>
+    );
+  });
+
+  return (
+    <div>
+      <h5>Please confirm your entries</h5>
+      {reviewFields}
+      <button className="btn-flat darken-3 yellow" onClick={onCancel}>
+        Back
+      </button>
+    </div>
+  );
+};
+
+function mapStateToProps(state) {
+  return { formValues: state.form.surveyForm.values };
+}
+
+export default connect(mapStateToProps)(SurveyFormReview);
+```
+
 ## 163. Outstanding Form Work
+Create action creator submitSurvey so survey can be submitted.
+
 ## 164. Dumping Form Values
+In the SurveyNew component add the reduxForm
+
+`export default reduxForm({ form: "surveyForm" })(SurveyNew);`
+
+Why does it work: the `destroyOnUnmount` value is not set to true so reduxForm dumps the value when we navigate away from surveyNew component and uses the default behaviour.
+
 ## 165. Fixing Property Names
+
+
 ## 166. Posting to Surveys
 ## 167. Redirect on Submit
 
