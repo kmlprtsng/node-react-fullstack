@@ -890,4 +890,34 @@ Teach SurveyFormReview about react router.
 
 # Section 12. Handling Webhook Data
 
+## 168. Feedback with Webhooks
+## 169. Webhooks in Development
+## 170. LocalTunnel Setup
+## 171. Testing Webhooks
+## 172. LocalTunnel Crash Fix
+## 173. Finalizing Webhook Setup
+## 174. Encoding Survey Data
+## 175. Dirty Data from Webhooks
+## 176. Processing Pipeline
+## 177. Parsing the Route
+## 178. Code Cleaup
+## 179. Unique Events
+## 180. Lodash Chain Helper
+## 181. Bad Mongoose Queries
+## 182. Finding the Exact Survey
+## 183. Updating Records
+## 184. Executing Queries
+## 185. Testing the Query
+## 186. Odds n' End Around Surveys
+## 187. Mongoose Tips
+
 # Section 13. The Home Stretch
+
+## 188. Fetching a List of Surveys
+## 189. Whitelisting Model Fields
+## 190. Testing Surveys Endpoint
+## 191. Wiring Surveys Up to Redux
+## 192. Wiring React to Redux
+## 193. Rending a List of Surveys
+## 194. Reverse the Survey List
+## 195. Expanding the App
