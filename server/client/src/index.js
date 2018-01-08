@@ -10,6 +10,7 @@ import App from "./components/App";
 
 //need to pass it reducers. Currently we are passing it empty reducers list.
 //second param is for server side rendering and passing it some state but we are not worried about that for this course.
+//redux thunk allows us to delay the dispatch from an action creator
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
