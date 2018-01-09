@@ -899,9 +899,30 @@ webhookhelper.localtunnel.com -> LocalTunnel server -> POST localhost:5000
 https://localtunnel.github.io/www
 
 ## 170. LocalTunnel Setup
+`npm install --save localtunnel`
+
+add `"webhook": "lt -p 5000 -s 403e41d3-936c-4a3f-bdb5-f2c864f770a6"` to package.json. lt stands for local tunnel. Guid is the subdomain for mysubdomain.localtunnel.com. Make sure it is unique otherwise we may see requests from subdomain that somebody else might be using.
+
+Also update npm run dev script.
 
 ## 171. Testing Webhooks
+
+Go to sendgrid -> Settings -> Mail Settings -> Event notification -> turn on and add http post url and point to a specific api endpoint i.e. https://403e41d3936c4a3fbdb5f2c864f770a6.localtunnel.me/api/surveys/webhooks
+
 ## 172. LocalTunnel Crash Fix
+LocalTunnel was crashing alot so use forever to fix that.
+
+`npm install --save-dev forever`
+
+```javascript
+var localtunnel = require('localtunnel');
+localtunnel(5000, { subdomain: <YOUR_SUBDOMAIN> }, function(err, tunnel) {
+  console.log('LT running')
+});
+```
+
+Update package.json `"webhook": "forever sendgrid_webhook.js"`
+
 ## 173. Finalizing Webhook Setup
 ## 174. Encoding Survey Data
 ## 175. Dirty Data from Webhooks
