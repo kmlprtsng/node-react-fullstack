@@ -10,7 +10,7 @@ module.exports = app => {
     res.send("Thanks for voting!!");
   });
 
-  app.get("/api/surveys/webhooks", (req, res) => {
+  app.post("/api/surveys/webhooks", (req, res) => {
     console.log(req.body);
     res.send({});
   })

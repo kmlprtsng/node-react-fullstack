@@ -924,6 +924,8 @@ localtunnel(5000, { subdomain: <YOUR_SUBDOMAIN> }, function(err, tunnel) {
 Update package.json `"webhook": "forever sendgrid_webhook.js"`
 
 ## 173. Finalizing Webhook Setup
+In sendgrid mail settings -> Select action 'clicked' and tick the button at the top to activate event notification.
+
 ## 174. Encoding Survey Data
 ## 175. Dirty Data from Webhooks
 ## 176. Processing Pipeline
